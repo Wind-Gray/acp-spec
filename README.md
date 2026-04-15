@@ -1,8 +1,6 @@
----
-🚨 **Status: Draft v0.1.0**
-This is a **work-in-progress specification** for the ACP (Agent Communication Protocol).
-Implementations are experimental. Breaking changes may occur without notice.
----
+> 🚨 **Status: Draft v0.1.0**
+> This is a **work-in-progress specification** for the ACP (Agent Communication Protocol).
+> Implementations are experimental. Breaking changes may occur without notice.
 
 # ACP — Agent Communication Protocol
 
