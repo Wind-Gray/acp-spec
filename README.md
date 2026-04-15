@@ -492,34 +492,6 @@ the interoperability test suite.
 
 ---
 
-## Roadmap
-
-### 0-6 months
-- [ ] RFC-ACP-0001 through 0013 published
-- [ ] Python + TypeScript reference implementations
-- [ ] Interoperability test suite v0.1
-- [ ] Developer mailing list open
-
-Done when two independent implementations interoperate.
-
-### 6-18 months
-- [ ] Complete six-layer spec (all 14 RFCs)
-- [ ] Go and Rust SDKs
-- [ ] Sidecar gateway for legacy REST services
-- [ ] ACP Foundation incorporated
-
-### 18-36 months
-- [ ] Adapters for MCP, OpenAI Agents, LangChain
-- [ ] IETF Working Group proposal submitted
-- [ ] Decentralized capability registry
-
-### 36+ months
-- [ ] IETF RFC published
-- [ ] W3C DID alignment
-- [ ] ISO standard track
-
----
-
 ## Repository Structure
 
 ```
