@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.acp-protocol.org/schemas/intent-object/1.0/schema.json",
+  "title": "ACP Intent Object",
+  "description": "Signed immutable record of user intent. RFC-ACP-0020.",
+  "type": "object",
+  "required": ["acp_version", "intent_id", "created_by", "created_at", "goal", "sig"],
+  "properties": {
+    "acp_version": { "type": "string", "const": "1.0" },
+    "intent_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "created_by": {
+      "type": "string",
+      "pattern": "^acp://[^/]+/.+$"
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "goal": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "context": {
+      "type": "object",
+      "properties": {
+        "urgency": { "enum": ["LOW","NORMAL","HIGH","CRITICAL"] },
+        "deadline": { "type": "string", "format": "date-time" },
+        "audience": { "type": "string" },
+        "background": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "human_checkpoints": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "sig": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{128}$"
+    }
+  },
+  "additionalProperties": false
+}

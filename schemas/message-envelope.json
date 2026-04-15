@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.acp-protocol.org/schemas/message-envelope/1.0/schema.json",
+  "title": "ACP Message Envelope",
+  "description": "Standard message envelope for ACP v1.0. RFC-ACP-0010.",
+  "type": "object",
+  "required": ["acp", "id", "type", "from", "to", "intent_ref", "timestamp", "sig"],
+  "properties": {
+    "acp": {
+      "type": "string", "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "description": "UUIDv7, globally unique message identifier."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["REQUEST","RESPONSE","ERROR","STREAM_START","STREAM_CHUNK",
+               "STREAM_END","EVENT","INTERRUPT","CHECKPOINT","HANDOFF",
+               "HITL_REQUEST","HITL_RESPONSE"]
+    },
+    "from": {
+      "type": "string",
+      "pattern": "^acp://[^/]+/.+$",
+      "description": "AID of the sending agent."
+    },
+    "to": {
+      "type": "string",
+      "pattern": "^acp://[^/]+/.+$",
+      "description": "AID of the recipient."
+    },
+    "intent_ref": {
+      "oneOf": [
+        { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        { "type": "null" }
+      ],
+      "description": "SHA-256 hash of originating Intent Object, or null."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC with millisecond precision."
+    },
+    "sig": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{128}$",
+      "description": "Ed25519 signature over canonical message (excluding sig)."
+    },
+    "session_id": { "type": "string" },
+    "in_reply_to": { "type": "string" },
+    "body": { "type": "object" },
+    "delegation_token": { "type": "object" },
+    "trace_id": { "type": "string", "maxLength": 128 }
+  },
+  "additionalProperties": true
+}
